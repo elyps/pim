@@ -10,12 +10,16 @@
         <div class="card m-1">
             <div class="card-content">
                 Welcome <strong>{{ request.user.username }}</strong>!
+                <br>
+                <small>Last login: <strong>{{ request.user.last_login }}</strong></small>
             </div>
         </div>
 
 </div>
 
 <div class="column">
+    <strong>Applications</strong>
+    <hr>
     <a href="{% url 'task-list' %}">
         <div class="card m-1">
             <div class="card-content">

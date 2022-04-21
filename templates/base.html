@@ -1,66 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-        <head>
-                <meta charset="UTF-8">
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                {% load static %}
-                <link rel="stylesheet" href="{% static 'main/vendor/bulma.min.css' %}" />
-                <title>PIM</title>
-        </head>
-        <body class="has-navbar-fixed-bottom has-navbar-fixed-top">
-                <nav class="navbar is-success is-fixed-top" role="navigation" aria-label="main navigation">
-                        <div id="navbarBasicExample" class="navbar-menu">
-                                <div class="navbar-start pl-2">
-                                        <a href="{% url 'main:main_index' %}" class="navbar-item">Main</a>
-                                        <a href="{% url 'task-list' %}" class="navbar-item">Tasks</a>
-                                </div>
-                                <div class="navbar-end pr-2">
-                                        <div class="navbar-item">
-                                                <a href="" class="button is-default is-success mr-1"><strong>{{ request.user.username }}</strong></a>
-                                                <a href = "{% url 'auth0:logout' %}"><button class="button is-danger is-default">Logout</button></a>
-                                        </div>
-                                </div>
-                        </div>
-                </nav>
-                <section class="hero is-small is-success mb-4">
-                        <div class="hero-body">
-                                <h1 class="title is-1">{% block title %}{% endblock %}</h1>
-                                <p class="subtitle is-4">
-                                {% block subtitle %}{% endblock %}
-                                </p>
-                        </div>
-                </section>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main/vendor/bulma.min.css' %}"/>
+    <title>PIM</title>
+</head>
+<body class="has-navbar-fixed-bottom has-navbar-fixed-top">
+<nav class="navbar is-success is-fixed-top" role="navigation" aria-label="main navigation">
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start pl-2">
+            <a href="{% url 'main:main_index' %}" class="navbar-item">Main</a>
+            <a href="{% url 'task-list' %}" class="navbar-item">Tasks</a>
+            <a href="{% url 'task-list' %}" class="navbar-item">Calendar</a>
+            <a href="{% url 'task-list' %}" class="navbar-item">Diary</a>
+            <a href="{% url 'task-list' %}" class="navbar-item">Notes</a>
+            <a href="{% url 'task-list' %}" class="navbar-item">Contacts</a>
+        </div>
+        <div class="navbar-end pr-2">
+            <div class="navbar-item">
+                <a href="" class="button is-default is-success mr-1"><strong>{{ request.user.username }}</strong></a>
+                <a href="{% url 'auth0:logout' %}">
+                    <button class="button is-danger is-default">Logout</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+<section class="hero is-small is-success mb-4">
+    <div class="hero-body">
+        <h1 class="title is-1">{% block title %}{% endblock %}</h1>
+        <p class="subtitle is-4">
+            {% block subtitle %}{% endblock %}
+        </p>
+    </div>
+</section>
 
-                {% if messages %}
-                <ul class="messagesi notification is-success is-light">
-                        <button class="delete"></button>
-                        {% for message in messages %}
-                        <li class"message">
-                                {{ message }}
-                        </li>
-                        {% endfor %}
-                </ul>
-                {% endif %}
+{% if messages %}
+    <ul class="messagesi notification is-success is-light">
+        <button class="delete"></button>
+        {% for message in messages %}
+            <li class"message">
+            {{ message }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
 
-                <div class="container mb-4">
-                        <div class="columns">
+<div class="container mb-4">
+    <div class="columns">
 
-                                {% block content %}
+        {% block content %}
 
-                                {% endblock content %}
+        {% endblock content %}
 
-                        </div>
-                </div>
-                <nav class="navbar is-success is-fixed-bottom">
-                        <div class="m-auto content has-text-centered">
-                                <p>
-                                <strong>PIM</strong> by <a href="https://bastian-fischer.dev" class="has-text-dark">Bastian Fischer</a>. The source code is licensed
-                                <a href="http://opensource.org/licenses/mit-license.php" class="has-text-dark">MIT</a>. The app content
-                                is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" class="has-text-dark">CC BY NC SA 4.0</a>.
-                                </p>
-                        </div>
-                </nav>
-                <script src="{% static 'main/js/delete_notification.js' %}"></script>
-        </body>
+    </div>
+</div>
+<nav class="navbar is-success is-fixed-bottom">
+    <div class="m-auto content has-text-centered">
+        <p>
+            <strong>PIM</strong> by <a href="https://bastian-fischer.dev" class="has-text-dark">Bastian Fischer</a>. The
+            source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php" class="has-text-dark">MIT</a>. The app content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" class="has-text-dark">CC BY NC SA
+            4.0</a>.
+        </p>
+    </div>
+</nav>
+<script src="{% static 'main/js/delete_notification.js' %}"></script>
+</body>
 </html>
