@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Tasks{% endblock %}
+{% block subtitle %}Your personal task manager.{% endblock %}
+
+
+{% block content %}
+<div class="column">
+        <article>
+                <!-- <h2 class="mark"><em>{% now "Y-m-d H:i" %}</em></h2> -->
+                <a href="{% url 'task-create' %}"><button class="button is-primary is-light">
+                                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                                        <path fill="currentColor" d="M17,13H13V17H11V13H7V11H11V7H13V11H17M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" />
+                                </svg>
+                                &ensp;Add New Task</button></a>
+        </article>
+</div>
+
+<br><br>
+
+<div class="column">
+
+        {% for task in task_list %}
+        <a href="{% url 'task-detail' task.id %}">
+                <div class="card m-1">
+
+                        <div class="card-content content">
+
+                                <span class="{{ task.date_created|date:'l' }} subtitle is-7">
+                                        {{ task.date_created|date:'Y-m-d H:i' }}
+                                </span>
+                                <br>
+                                <span class="title is-6 has-text-primary">
+                                        {{ task.title }}
+                                </span>
+
+                        </div>
+                </div>
+
+        </a>
+        {% endfor %}
+</div>
+
+{% endblock content %}

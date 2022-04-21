@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}PIM{% endblock %}
+{% block subtitle %}Personal information manager.{% endblock %}
+
+{% block content %}
+
+<div class="column">
+
+        <div class="card m-1">
+            <div class="card-content">
+                Welcome <strong>{{ request.user.username }}</strong>!
+            </div>
+        </div>
+
+</div>
+
+<div class="column">
+    <a href="{% url 'task-list' %}">
+        <div class="card m-1">
+            <div class="card-content">
+                Task Manager
+            </div>
+        </div>
+    </a>
+    <a href="{% url 'task-list' %}">
+        <div class="card m-1">
+            <div class="card-content">
+                Calendar
+            </div>
+        </div>
+    </a>
+    <a href="{% url 'task-list' %}">
+        <div class="card m-1">
+            <div class="card-content">
+                Diary
+            </div>
+        </div>
+    </a>
+    <a href="{% url 'task-list' %}">
+        <div class="card m-1">
+            <div class="card-content">
+                Notes
+            </div>
+        </div>
+    </a>
+    <a href="{% url 'task-list' %}">
+        <div class="card m-1">
+            <div class="card-content">
+                Contacts
+            </div>
+        </div>
+    </a>
+</div>
+
+
+{% endblock %}
